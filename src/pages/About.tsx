@@ -1,4 +1,3 @@
-import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Card, CardContent } from "@/components/ui/card";
 import { Heart, Target, Zap } from "lucide-react";
@@ -27,7 +26,7 @@ const About = () => {
 
   return (
     <div className="min-h-screen flex flex-col" data-lang={i18n.resolvedLanguage}>
-      <Navigation />
+      {/* Navigation removed in favor of global Header in App */}
       
       <main className="flex-1">
         {/* Header */}

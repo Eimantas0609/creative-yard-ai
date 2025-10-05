@@ -1,4 +1,3 @@
-import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -86,7 +85,7 @@ const Services = () => {
 
   return (
     <div className="min-h-screen flex flex-col" data-lang={i18n.resolvedLanguage}>
-      <Navigation />
+      {/* Navigation removed in favor of global Header in App */}
       
       <main className="flex-1">
         {/* Header */}

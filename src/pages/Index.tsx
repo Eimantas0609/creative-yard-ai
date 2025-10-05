@@ -1,12 +1,10 @@
-import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Link } from "react-router-dom";
-import { ArrowRight, Sparkles } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { useTranslation } from "react-i18next";
-import LanguageSwitcher from "@/components/LanguageSwitcher";
 import SeoLinks from "@/components/SeoLinks";
 
 const Index = () => {
@@ -53,17 +51,13 @@ const Index = () => {
   return (
     <div className="min-h-screen flex flex-col">
       <SeoLinks />
-      <Navigation />
+      {/* Navigation removed in favor of global Header in App */}
       
       <main className="flex-1">
         {/* Hero Section */}
-        <section className="py-20 md:py-32 bg-gradient-to-br from-primary/5 via-accent/5 to-secondary/10">
+        <section className="hero py-20 md:py-32 bg-gradient-to-br from-primary/5 via-accent/5 to-secondary/10">
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto text-center space-y-8">
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium animate-fade-in">
-                <Sparkles size={16} />
-                <LanguageSwitcher />
-              </div>
               <h1 className="text-5xl md:text-7xl font-bold leading-tight animate-fade-up">
                 {t("home.heroTitle")}
               </h1>

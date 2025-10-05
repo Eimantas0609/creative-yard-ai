@@ -1,4 +1,3 @@
-import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -37,7 +36,7 @@ const Contact = () => {
   const { t } = useTranslation("common");
   return (
     <div className="min-h-screen flex flex-col" data-lang={i18n.resolvedLanguage}>
-      <Navigation />
+      {/* Navigation removed in favor of global Header in App */}
       
       <main className="flex-1">
         {/* Header */}

@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import LanguageSwitcher from "./LanguageSwitcher";
 import i18n from "@/i18n";
+import { Button } from "@/components/ui/button";
 
 export default function Header() {
   const { t } = useTranslation("common");
@@ -34,8 +35,12 @@ export default function Header() {
               {t("header.contact")}
             </Link>
           </nav>
-
-          <LanguageSwitcher />
+          <div className="flex items-center gap-3">
+            <LanguageSwitcher />
+            <Link to="/auth">
+              <Button size="sm">{t("header.signIn")}</Button>
+            </Link>
+          </div>
         </div>
       </div>
     </header>
