@@ -1,0 +1,45 @@
+import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+import LanguageSwitcher from "./LanguageSwitcher";
+import i18n from "@/i18n";
+
+export default function Header() {
+  const { t } = useTranslation("common");
+
+  return (
+    <header className="sticky top-0 z-50 bg-background/80 backdrop-blur-md border-b border-border" data-lang={i18n.resolvedLanguage}>
+      <div className="container mx-auto px-4">
+        <div className="flex items-center justify-between h-16">
+          <Link to="/" className="text-2xl font-bold text-primary">
+            {t("header.brand")}
+          </Link>
+
+          <nav className="hidden md:flex items-center gap-6">
+            <Link to="/" className="text-sm font-medium text-foreground/70 hover:text-primary">
+              {t("header.home")}
+            </Link>
+            <Link to="/projects" className="text-sm font-medium text-foreground/70 hover:text-primary">
+              {t("header.projects")}
+            </Link>
+            <Link to="/blog" className="text-sm font-medium text-foreground/70 hover:text-primary">
+              {t("header.blog")}
+            </Link>
+            <Link to="/services" className="text-sm font-medium text-foreground/70 hover:text-primary">
+              {t("header.services")}
+            </Link>
+            <Link to="/about" className="text-sm font-medium text-foreground/70 hover:text-primary">
+              {t("header.about")}
+            </Link>
+            <Link to="/contact" className="text-sm font-medium text-foreground/70 hover:text-primary">
+              {t("header.contact")}
+            </Link>
+          </nav>
+
+          <LanguageSwitcher />
+        </div>
+      </div>
+    </header>
+  );
+}
+
+
