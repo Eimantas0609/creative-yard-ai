@@ -2,20 +2,22 @@ import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 const Navigation = () => {
   const location = useLocation();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const isActive = (path: string) => location.pathname === path;
+  const { t } = useTranslation("common");
 
   const navLinks = [
-    { path: "/", label: "Home" },
-    { path: "/projects", label: "Projects" },
-    { path: "/blog", label: "Blog" },
-    { path: "/services", label: "Services" },
-    { path: "/about", label: "About" },
-    { path: "/contact", label: "Contact" },
+    { path: "/", label: t("header.home") },
+    { path: "/projects", label: t("header.projects") },
+    { path: "/blog", label: t("header.blog") },
+    { path: "/services", label: t("header.services") },
+    { path: "/about", label: t("header.about") },
+    { path: "/contact", label: t("header.contact") },
   ];
 
   return (
@@ -24,7 +26,7 @@ const Navigation = () => {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link to="/" className="text-2xl font-bold text-primary">
-            Creative Yard
+            {t("header.brand")}
           </Link>
 
           {/* Desktop Navigation */}
@@ -41,7 +43,7 @@ const Navigation = () => {
               </Link>
             ))}
             <Link to="/auth">
-              <Button size="sm">Sign In</Button>
+              <Button size="sm">{t("header.signIn")}</Button>
             </Link>
           </div>
 

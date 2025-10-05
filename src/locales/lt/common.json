@@ -1,0 +1,142 @@
+{
+  "home": {
+    "heroTitle": "Kuriame įkvepiančius skaitmeninius potyrius",
+    "heroSubtitle": "Jungiame kūrybiškumą ir technologijas, kad sukurtume išskirtines svetaines, prekių ženklus ir skaitmeninius produktus.",
+    "ctaWorks": "Peržiūrėti darbus",
+    "ctaContact": "Susisiekti",
+    "featuredProjectsTitle": "Išskirtiniai projektai",
+    "featuredProjectsSubtitle": "Žvilgsnis į naujausius darbus ir kūrybinius sprendimus.",
+    "viewAllProjects": "Peržiūrėti visus projektus",
+    "latestInsightsTitle": "Naujausios įžvalgos",
+    "latestInsightsSubtitle": "Mintys, pamokos ir naujienos iš mūsų komandos.",
+    "readMoreArticles": "Skaityti daugiau straipsnių",
+    "ctaSectionTitle": "Pasiruošę pradėti projektą?",
+    "ctaSectionSubtitle": "Kurkime kartu – nuo idėjos iki įgyvendinimo su puikiu dizainu ir technologijomis.",
+    "ctaGetStarted": "Pradėti šiandien"
+  },
+  "header": {
+    "brand": "Creative Yard",
+    "home": "Pagrindinis",
+    "projects": "Projektai",
+    "blog": "Tinklaraštis",
+    "services": "Paslaugos",
+    "about": "Apie mus",
+    "contact": "Kontaktai",
+    "signIn": "Prisijungti"
+  },
+  "footer": {
+    "brand": "Creative Yard",
+    "tagline": "Kuriame gražias skaitmenines patirtis su aistra ir precizika.",
+    "quickLinks": "Greitos nuorodos",
+    "company": "Įmonė",
+    "followUs": "Sekite mus",
+    "projects": "Projektai",
+    "blog": "Tinklaraštis",
+    "services": "Paslaugos",
+    "about": "Apie mus",
+    "contact": "Kontaktai",
+    "rights": "Visos teisės saugomos."
+  },
+  "services": {
+    "headerTitle": "Mūsų paslaugos",
+    "headerSubtitle": "Išsamūs skaitmeniniai sprendimai, pritaikyti įgyvendinti jūsų viziją.",
+    "startingFrom": "Nuo",
+    "ctaGetStarted": "Pradėti",
+    "ctaSectionSubtitle": "Aptarkime, kaip galime padėti įgyvendinti jūsų idėjas su mūsų patirtimi.",
+    "ctaContactUs": "Susisiekite šiandien",
+    "items": {
+      "brandIdentity": {
+        "title": "Prekės ženklo tapatybė",
+        "description": "Sukurkite išskirtinę ir įsimintiną tapatybę, kuri atlieps jūsų auditoriją.",
+        "features": ["Logotipo kūrimas", "Ženklo gairės", "Vizualinė tapatybė", "Rinkodaros medžiaga"],
+        "priceRange": "2 000–5 000 €"
+      },
+      "webDevelopment": {
+        "title": "Tinklalapių kūrimas",
+        "description": "Kurkite greitas, adaptyvias ir mastelio keičiamas svetaines, suteikiančias puikią patirtį.",
+        "features": ["Individualios svetainės", "E. komercija", "CMS integracija", "Našumo optimizavimas"],
+        "priceRange": "3 000–10 000 €"
+      },
+      "mobileAppDesign": {
+        "title": "Mobilios programėlės dizainas",
+        "description": "Kurkite intuityvias programėles, kurias malonu naudoti.",
+        "features": ["iOS ir Android", "UI/UX dizainas", "Prototipavimas", "Naudojimo testai"],
+        "priceRange": "4 000–12 000 €"
+      },
+      "customDevelopment": {
+        "title": "Nestandartiniai sprendimai",
+        "description": "Sprendimai, pritaikyti konkretiems jūsų verslo poreikiams.",
+        "features": ["API integracija", "Duomenų bazių dizainas", "Debesų sprendimai", "Priežiūra ir palaikymas"],
+        "priceRange": "5 000–20 000 €"
+      },
+      "uiux": {
+        "title": "UI/UX dizainas",
+        "description": "Gražios ir funkcionalios sąsajos su dėmesiu naudotojo patirčiai.",
+        "features": ["Braižymas", "Naudotojų tyrimai", "Sąsajos dizainas", "Naudojimo testavimas"],
+        "priceRange": "2 500–8 000 €"
+      },
+      "consulting": {
+        "title": "Konsultacijos",
+        "description": "Strateginės įžvalgos tinkamiems technologijų ir dizaino sprendimams.",
+        "features": ["Technologijų strategija", "Dizaino auditas", "Architektūros planavimas", "Procesų optimizavimas"],
+        "priceRange": "150–300 €/val."
+      }
+    }
+  },
+  "about": {
+    "headerTitle": "Apie mus",
+    "headerSubtitle": "Kur kūryba susitinka su technologijomis ir gimsta išskirtinės patirtys.",
+    "story": {
+      "title": "Mūsų istorija",
+      "p1": "Creative Yard gimė iš paprastos idėjos: puikus dizainas ir galingos technologijos kartu kuria prasmingas patirtis.",
+      "p2": "Iš mažos, entuziastingų kūrėjų komandos išaugome į kūrybinę komandą, teikiančią išskirtinius sprendimus klientams visame pasaulyje.",
+      "p3": "Tikime bendradarbiavimu, naudotojo poreikiais grįstu dizainu ir magija, kuri įvyksta susitikus kūrybai bei technologijoms."
+    },
+    "values": {
+      "title": "Mūsų vertybės",
+      "subtitle": "Principai, kuriais vadovaujamės visur.",
+      "passion": { "title": "Aistra", "description": "Į kiekvieną projektą įdedame širdį – tarsi kurtume sau." },
+      "precision": { "title": "Tikslumas", "description": "Detalės mums svarbios. Kuriame precizišką dizainą ir švarų kodą." },
+      "innovation": { "title": "Inovacijos", "description": "Lenkiame laiką – siūlome šviežias idėjas ir naujausius sprendimus." }
+    },
+    "stats": {
+      "title": "Skaičiais",
+      "items": {
+        "projectsCompleted": "Įgyvendinti projektai",
+        "happyClients": "Laimingi klientai",
+        "yearsExperience": "Metų patirtis",
+        "teamMembers": "Komandos nariai"
+      }
+    }
+  },
+  "projects": {
+    "headerTitle": "Mūsų projektai",
+    "headerSubtitle": "Geriausių darbų rinkinys, parodantis kūrybiškumą ir meistriškumą."
+  },
+  "blog": {
+    "headerTitle": "Tinklaraštis",
+    "headerSubtitle": "Įžvalgos, pamokos ir mintys apie dizainą, kūrimą ir kūrybą."
+  },
+  "contact": {
+    "headerTitle": "Susisiekite",
+    "headerSubtitle": "Turite idėją? Aptarkime, kaip galime padėti ją įgyvendinti.",
+    "form": {
+      "title": "Parašykite mums",
+      "name": "Vardas",
+      "namePlaceholder": "Jonas Jonaitis",
+      "email": "El. paštas",
+      "emailPlaceholder": "jonas@pavyzdys.lt",
+      "message": "Žinutė",
+      "messagePlaceholder": "Papasakokite apie savo projektą...",
+      "submit": "Siųsti žinutę"
+    },
+    "info": {
+      "title": "Kontaktinė informacija",
+      "subtitle": "Susisiekite jums patogiu būdu – mes pasiruošę padėti!",
+      "email": "El. paštas",
+      "phone": "Telefonas",
+      "location": "Vieta"
+    }
+  }
+}
+

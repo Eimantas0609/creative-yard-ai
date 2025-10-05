@@ -1,0 +1,142 @@
+{
+  "home": {
+    "heroTitle": "Crafting Digital Experiences That Inspire",
+    "heroSubtitle": "We blend creativity with technology to build exceptional websites, brands, and digital products.",
+    "ctaWorks": "View Our Work",
+    "ctaContact": "Get in Touch",
+    "featuredProjectsTitle": "Featured Projects",
+    "featuredProjectsSubtitle": "A glimpse into our latest work and creative solutions.",
+    "viewAllProjects": "View All Projects",
+    "latestInsightsTitle": "Latest Insights",
+    "latestInsightsSubtitle": "Thoughts, tutorials, and updates from our team.",
+    "readMoreArticles": "Read More Articles",
+    "ctaSectionTitle": "Ready to Start Your Project?",
+    "ctaSectionSubtitle": "Let's collaborate to bring your vision to life with beautiful design and powerful technology.",
+    "ctaGetStarted": "Get Started Today"
+  },
+  "header": {
+    "brand": "Creative Yard",
+    "home": "Home",
+    "projects": "Projects",
+    "blog": "Blog",
+    "services": "Services",
+    "about": "About",
+    "contact": "Contact",
+    "signIn": "Sign In"
+  },
+  "footer": {
+    "brand": "Creative Yard",
+    "tagline": "Crafting beautiful digital experiences with passion and precision.",
+    "quickLinks": "Quick Links",
+    "company": "Company",
+    "followUs": "Follow Us",
+    "projects": "Projects",
+    "blog": "Blog",
+    "services": "Services",
+    "about": "About",
+    "contact": "Contact",
+    "rights": "All rights reserved."
+  },
+  "services": {
+    "headerTitle": "Our Services",
+    "headerSubtitle": "Comprehensive digital solutions tailored to bring your vision to life.",
+    "startingFrom": "Starting from",
+    "ctaGetStarted": "Get Started",
+    "ctaSectionSubtitle": "Let's discuss how we can help bring your ideas to life with our expertise.",
+    "ctaContactUs": "Contact Us Today",
+    "items": {
+      "brandIdentity": {
+        "title": "Brand Identity",
+        "description": "Create a unique and memorable brand identity that resonates with your target audience.",
+        "features": ["Logo Design", "Brand Guidelines", "Visual Identity", "Marketing Materials"],
+        "priceRange": "$2,000 - $5,000"
+      },
+      "webDevelopment": {
+        "title": "Web Development",
+        "description": "Build fast, responsive, and scalable websites that deliver exceptional user experiences.",
+        "features": ["Custom Websites", "E-Commerce", "CMS Integration", "Performance Optimization"],
+        "priceRange": "$3,000 - $10,000"
+      },
+      "mobileAppDesign": {
+        "title": "Mobile App Design",
+        "description": "Design intuitive mobile applications that users love to interact with.",
+        "features": ["iOS & Android", "UI/UX Design", "Prototyping", "User Testing"],
+        "priceRange": "$4,000 - $12,000"
+      },
+      "customDevelopment": {
+        "title": "Custom Development",
+        "description": "Tailored software solutions to meet your specific business needs.",
+        "features": ["API Integration", "Database Design", "Cloud Solutions", "Maintenance & Support"],
+        "priceRange": "$5,000 - $20,000"
+      },
+      "uiux": {
+        "title": "UI/UX Design",
+        "description": "Create beautiful and functional user interfaces with focus on user experience.",
+        "features": ["Wireframing", "User Research", "Interface Design", "Usability Testing"],
+        "priceRange": "$2,500 - $8,000"
+      },
+      "consulting": {
+        "title": "Consulting",
+        "description": "Strategic guidance to help you make the right technology and design decisions.",
+        "features": ["Tech Strategy", "Design Audit", "Architecture Planning", "Process Optimization"],
+        "priceRange": "$150 - $300/hour"
+      }
+    }
+  },
+  "about": {
+    "headerTitle": "About Us",
+    "headerSubtitle": "Where creativity meets technology to build exceptional digital experiences.",
+    "story": {
+      "title": "Our Story",
+      "p1": "Creative Yard was born from a simple belief: that great design and powerful technology should work hand in hand to create experiences that matter.",
+      "p2": "What started as a small team of passionate designers and developers has grown into a creative powerhouse, delivering exceptional digital solutions for clients worldwide.",
+      "p3": "We believe in the power of collaboration, the importance of user-centered design, and the magic that happens when creativity meets technical excellence."
+    },
+    "values": {
+      "title": "Our Values",
+      "subtitle": "The principles that guide everything we do.",
+      "passion": { "title": "Passion", "description": "We pour our heart into every project, treating each as our own masterpiece." },
+      "precision": { "title": "Precision", "description": "Attention to detail is our forte. We craft pixel-perfect designs and clean code." },
+      "innovation": { "title": "Innovation", "description": "We stay ahead of trends, bringing fresh ideas and cutting-edge solutions." }
+    },
+    "stats": {
+      "title": "By the Numbers",
+      "items": {
+        "projectsCompleted": "Projects Completed",
+        "happyClients": "Happy Clients",
+        "yearsExperience": "Years Experience",
+        "teamMembers": "Team Members"
+      }
+    }
+  },
+  "projects": {
+    "headerTitle": "Our Projects",
+    "headerSubtitle": "A collection of our finest work, showcasing creativity and technical excellence."
+  },
+  "blog": {
+    "headerTitle": "Blog",
+    "headerSubtitle": "Insights, tutorials, and thoughts on design, development, and creativity."
+  },
+  "contact": {
+    "headerTitle": "Get in Touch",
+    "headerSubtitle": "Have a project in mind? Let's discuss how we can help bring your vision to life.",
+    "form": {
+      "title": "Send us a message",
+      "name": "Your Name",
+      "namePlaceholder": "John Doe",
+      "email": "Email Address",
+      "emailPlaceholder": "john@example.com",
+      "message": "Message",
+      "messagePlaceholder": "Tell us about your project...",
+      "submit": "Send Message"
+    },
+    "info": {
+      "title": "Contact Information",
+      "subtitle": "Feel free to reach out through any of these channels. We're here to help!",
+      "email": "Email",
+      "phone": "Phone",
+      "location": "Location"
+    }
+  }
+}
+

@@ -4,55 +4,88 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Palette, Code, Smartphone, Globe, Sparkles, Users } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+import i18n from "@/i18n";
 
 const Services = () => {
+  const { t } = useTranslation("common");
   const services = [
     {
       icon: Palette,
-      title: "Brand Identity",
-      description: "Create a unique and memorable brand identity that resonates with your target audience.",
-      features: ["Logo Design", "Brand Guidelines", "Visual Identity", "Marketing Materials"],
-      priceRange: "$2,000 - $5,000",
+      title: t("services.items.brandIdentity.title"),
+      description: t("services.items.brandIdentity.description"),
+      features: [
+        t("services.items.brandIdentity.features.0"),
+        t("services.items.brandIdentity.features.1"),
+        t("services.items.brandIdentity.features.2"),
+        t("services.items.brandIdentity.features.3")
+      ],
+      priceRange: t("services.items.brandIdentity.priceRange"),
     },
     {
       icon: Globe,
-      title: "Web Development",
-      description: "Build fast, responsive, and scalable websites that deliver exceptional user experiences.",
-      features: ["Custom Websites", "E-Commerce", "CMS Integration", "Performance Optimization"],
-      priceRange: "$3,000 - $10,000",
+      title: t("services.items.webDevelopment.title"),
+      description: t("services.items.webDevelopment.description"),
+      features: [
+        t("services.items.webDevelopment.features.0"),
+        t("services.items.webDevelopment.features.1"),
+        t("services.items.webDevelopment.features.2"),
+        t("services.items.webDevelopment.features.3")
+      ],
+      priceRange: t("services.items.webDevelopment.priceRange"),
     },
     {
       icon: Smartphone,
-      title: "Mobile App Design",
-      description: "Design intuitive mobile applications that users love to interact with.",
-      features: ["iOS & Android", "UI/UX Design", "Prototyping", "User Testing"],
-      priceRange: "$4,000 - $12,000",
+      title: t("services.items.mobileAppDesign.title"),
+      description: t("services.items.mobileAppDesign.description"),
+      features: [
+        t("services.items.mobileAppDesign.features.0"),
+        t("services.items.mobileAppDesign.features.1"),
+        t("services.items.mobileAppDesign.features.2"),
+        t("services.items.mobileAppDesign.features.3")
+      ],
+      priceRange: t("services.items.mobileAppDesign.priceRange"),
     },
     {
       icon: Code,
-      title: "Custom Development",
-      description: "Tailored software solutions to meet your specific business needs.",
-      features: ["API Integration", "Database Design", "Cloud Solutions", "Maintenance & Support"],
-      priceRange: "$5,000 - $20,000",
+      title: t("services.items.customDevelopment.title"),
+      description: t("services.items.customDevelopment.description"),
+      features: [
+        t("services.items.customDevelopment.features.0"),
+        t("services.items.customDevelopment.features.1"),
+        t("services.items.customDevelopment.features.2"),
+        t("services.items.customDevelopment.features.3")
+      ],
+      priceRange: t("services.items.customDevelopment.priceRange"),
     },
     {
       icon: Sparkles,
-      title: "UI/UX Design",
-      description: "Create beautiful and functional user interfaces with focus on user experience.",
-      features: ["Wireframing", "User Research", "Interface Design", "Usability Testing"],
-      priceRange: "$2,500 - $8,000",
+      title: t("services.items.uiux.title"),
+      description: t("services.items.uiux.description"),
+      features: [
+        t("services.items.uiux.features.0"),
+        t("services.items.uiux.features.1"),
+        t("services.items.uiux.features.2"),
+        t("services.items.uiux.features.3")
+      ],
+      priceRange: t("services.items.uiux.priceRange"),
     },
     {
       icon: Users,
-      title: "Consulting",
-      description: "Strategic guidance to help you make the right technology and design decisions.",
-      features: ["Tech Strategy", "Design Audit", "Architecture Planning", "Process Optimization"],
-      priceRange: "$150 - $300/hour",
+      title: t("services.items.consulting.title"),
+      description: t("services.items.consulting.description"),
+      features: [
+        t("services.items.consulting.features.0"),
+        t("services.items.consulting.features.1"),
+        t("services.items.consulting.features.2"),
+        t("services.items.consulting.features.3")
+      ],
+      priceRange: t("services.items.consulting.priceRange"),
     },
   ];
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col" data-lang={i18n.resolvedLanguage}>
       <Navigation />
       
       <main className="flex-1">
@@ -60,10 +93,10 @@ const Services = () => {
         <section className="py-20 bg-secondary/20">
           <div className="container mx-auto px-4 text-center">
             <h1 className="text-5xl md:text-6xl font-bold mb-6 animate-fade-up">
-              Our Services
+              {t("services.headerTitle")}
             </h1>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto animate-fade-up">
-              Comprehensive digital solutions tailored to bring your vision to life.
+              {t("services.headerSubtitle")}
             </p>
           </div>
         </section>
@@ -98,10 +131,10 @@ const Services = () => {
                     </ul>
                     <div className="pt-4 border-t border-border">
                       <p className="text-sm text-muted-foreground mb-4">
-                        Starting from <span className="font-semibold text-primary">{service.priceRange}</span>
+                        {t("services.startingFrom")} <span className="font-semibold text-primary">{service.priceRange}</span>
                       </p>
                       <Link to="/contact">
-                        <Button className="w-full">Get Started</Button>
+                        <Button className="w-full">{t("services.ctaGetStarted")}</Button>
                       </Link>
                     </div>
                   </CardContent>
@@ -114,13 +147,13 @@ const Services = () => {
         {/* CTA Section */}
         <section className="py-20 bg-primary/5">
           <div className="container mx-auto px-4 text-center">
-            <h2 className="text-4xl font-bold mb-6">Ready to Start Your Project?</h2>
+            <h2 className="text-4xl font-bold mb-6">{t("home.ctaSectionTitle")}</h2>
             <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-              Let's discuss how we can help bring your ideas to life with our expertise.
+              {t("services.ctaSectionSubtitle")}
             </p>
             <Link to="/contact">
               <Button size="lg" className="shadow-glow">
-                Contact Us Today
+                {t("services.ctaContactUs")}
               </Button>
             </Link>
           </div>

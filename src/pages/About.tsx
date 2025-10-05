@@ -2,28 +2,31 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Card, CardContent } from "@/components/ui/card";
 import { Heart, Target, Zap } from "lucide-react";
+import { useTranslation } from "react-i18next";
+import i18n from "@/i18n";
 
 const About = () => {
+  const { t } = useTranslation("common");
   const values = [
     {
       icon: Heart,
-      title: "Passion",
-      description: "We pour our heart into every project, treating each as our own masterpiece.",
+      title: t("about.values.passion.title"),
+      description: t("about.values.passion.description"),
     },
     {
       icon: Target,
-      title: "Precision",
-      description: "Attention to detail is our forte. We craft pixel-perfect designs and clean code.",
+      title: t("about.values.precision.title"),
+      description: t("about.values.precision.description"),
     },
     {
       icon: Zap,
-      title: "Innovation",
-      description: "We stay ahead of trends, bringing fresh ideas and cutting-edge solutions.",
+      title: t("about.values.innovation.title"),
+      description: t("about.values.innovation.description"),
     },
   ];
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col" data-lang={i18n.resolvedLanguage}>
       <Navigation />
       
       <main className="flex-1">
@@ -31,10 +34,10 @@ const About = () => {
         <section className="py-20 bg-secondary/20">
           <div className="container mx-auto px-4">
             <h1 className="text-5xl md:text-6xl font-bold mb-6 animate-fade-up">
-              About Us
+              {t("about.headerTitle")}
             </h1>
             <p className="text-xl text-muted-foreground max-w-2xl animate-fade-up">
-              Where creativity meets technology to build exceptional digital experiences.
+              {t("about.headerSubtitle")}
             </p>
           </div>
         </section>
@@ -44,18 +47,15 @@ const About = () => {
           <div className="container mx-auto px-4">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <div className="space-y-6 animate-fade-in">
-                <h2 className="text-4xl font-bold">Our Story</h2>
+                <h2 className="text-4xl font-bold">{t("about.story.title")}</h2>
                 <p className="text-lg text-muted-foreground leading-relaxed">
-                  Creative Yard was born from a simple belief: that great design and powerful technology 
-                  should work hand in hand to create experiences that matter.
+                  {t("about.story.p1")}
                 </p>
                 <p className="text-lg text-muted-foreground leading-relaxed">
-                  What started as a small team of passionate designers and developers has grown into 
-                  a creative powerhouse, delivering exceptional digital solutions for clients worldwide.
+                  {t("about.story.p2")}
                 </p>
                 <p className="text-lg text-muted-foreground leading-relaxed">
-                  We believe in the power of collaboration, the importance of user-centered design, 
-                  and the magic that happens when creativity meets technical excellence.
+                  {t("about.story.p3")}
                 </p>
               </div>
               <div className="rounded-2xl overflow-hidden shadow-warm animate-scale-in">
@@ -73,9 +73,9 @@ const About = () => {
         <section className="py-16 bg-secondary/20">
           <div className="container mx-auto px-4">
             <div className="text-center mb-12">
-              <h2 className="text-4xl font-bold mb-4">Our Values</h2>
+              <h2 className="text-4xl font-bold mb-4">{t("about.values.title")}</h2>
               <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-                The principles that guide everything we do.
+                {t("about.values.subtitle")}
               </p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -103,13 +103,13 @@ const About = () => {
         {/* Fun Facts */}
         <section className="py-16">
           <div className="container mx-auto px-4">
-            <h2 className="text-4xl font-bold text-center mb-12">By the Numbers</h2>
+            <h2 className="text-4xl font-bold text-center mb-12">{t("about.stats.title")}</h2>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
               {[
-                { number: "100+", label: "Projects Completed" },
-                { number: "50+", label: "Happy Clients" },
-                { number: "5+", label: "Years Experience" },
-                { number: "10+", label: "Team Members" },
+                { number: "100+", label: t("about.stats.items.projectsCompleted") },
+                { number: "50+", label: t("about.stats.items.happyClients") },
+                { number: "5+", label: t("about.stats.items.yearsExperience") },
+                { number: "10+", label: t("about.stats.items.teamMembers") },
               ].map((stat, index) => (
                 <div 
                   key={stat.label} 

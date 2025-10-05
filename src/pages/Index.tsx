@@ -5,6 +5,9 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Link } from "react-router-dom";
 import { ArrowRight, Sparkles } from "lucide-react";
+import { useTranslation } from "react-i18next";
+import LanguageSwitcher from "@/components/LanguageSwitcher";
+import SeoLinks from "@/components/SeoLinks";
 
 const Index = () => {
   const featuredProjects = [
@@ -45,8 +48,11 @@ const Index = () => {
     },
   ];
 
+  const { t } = useTranslation("common");
+
   return (
     <div className="min-h-screen flex flex-col">
+      <SeoLinks />
       <Navigation />
       
       <main className="flex-1">
@@ -56,26 +62,24 @@ const Index = () => {
             <div className="max-w-4xl mx-auto text-center space-y-8">
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium animate-fade-in">
                 <Sparkles size={16} />
-                Welcome to Creative Yard
+                <LanguageSwitcher />
               </div>
               <h1 className="text-5xl md:text-7xl font-bold leading-tight animate-fade-up">
-                Crafting Digital
-                <span className="text-primary"> Experiences</span>
-                <br />That Inspire
+                {t("home.heroTitle")}
               </h1>
               <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto animate-fade-up">
-                We blend creativity with technology to build exceptional websites, brands, and digital products.
+                {t("home.heroSubtitle")}
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-up">
                 <Link to="/projects">
                   <Button size="lg" className="shadow-glow">
-                    View Our Work
+                    {t("home.ctaWorks")}
                     <ArrowRight className="ml-2" size={20} />
                   </Button>
                 </Link>
                 <Link to="/contact">
                   <Button size="lg" variant="outline">
-                    Get in Touch
+                    {t("home.ctaContact")}
                   </Button>
                 </Link>
               </div>
@@ -87,9 +91,9 @@ const Index = () => {
         <section className="py-20">
           <div className="container mx-auto px-4">
             <div className="text-center mb-12">
-              <h2 className="text-4xl md:text-5xl font-bold mb-4">Featured Projects</h2>
+              <h2 className="text-4xl md:text-5xl font-bold mb-4">{t("home.featuredProjectsTitle")}</h2>
               <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-                A glimpse into our latest work and creative solutions.
+                {t("home.featuredProjectsSubtitle")}
               </p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
@@ -118,7 +122,7 @@ const Index = () => {
             <div className="text-center">
               <Link to="/projects">
                 <Button variant="outline" size="lg">
-                  View All Projects
+                  {t("home.viewAllProjects")}
                   <ArrowRight className="ml-2" size={20} />
                 </Button>
               </Link>
@@ -130,9 +134,9 @@ const Index = () => {
         <section className="py-20 bg-secondary/10">
           <div className="container mx-auto px-4">
             <div className="text-center mb-12">
-              <h2 className="text-4xl md:text-5xl font-bold mb-4">Latest Insights</h2>
+              <h2 className="text-4xl md:text-5xl font-bold mb-4">{t("home.latestInsightsTitle")}</h2>
               <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-                Thoughts, tutorials, and updates from our team.
+                {t("home.latestInsightsSubtitle")}
               </p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8 max-w-5xl mx-auto">
@@ -164,7 +168,7 @@ const Index = () => {
             <div className="text-center">
               <Link to="/blog">
                 <Button variant="outline" size="lg">
-                  Read More Articles
+                  {t("home.readMoreArticles")}
                   <ArrowRight className="ml-2" size={20} />
                 </Button>
               </Link>
@@ -179,13 +183,13 @@ const Index = () => {
               <CardContent className="p-12 md:p-16 text-center relative">
                 <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmYiIGZpbGwtb3BhY2l0eT0iMC4xIj48cGF0aCBkPSJNMzYgMzRjMC0yLjIxLTEuNzktNC00LTRzLTQgMS43OS00IDQgMS43OSA0IDQgNCA0LTEuNzkgNC00em0wLTEyYzAtMi4yMS0xLjc5LTQtNC00cy00IDEuNzktNCA0IDEuNzkgNCA0IDQgNC0xLjc5IDQtNHptMC0xMmMwLTIuMjEtMS43OS00LTQtNHMtNCAxLjc5LTQgNCAxLjc5IDQgNCA0IDQtMS43OSA0LTR6Ii8+PC9nPjwvZz48L3N2Zz4=')] opacity-20"></div>
                 <div className="relative z-10 space-y-6">
-                  <h2 className="text-4xl md:text-5xl font-bold">Ready to Start Your Project?</h2>
+                  <h2 className="text-4xl md:text-5xl font-bold">{t("home.ctaSectionTitle")}</h2>
                   <p className="text-xl opacity-90 max-w-2xl mx-auto">
-                    Let's collaborate to bring your vision to life with beautiful design and powerful technology.
+                    {t("home.ctaSectionSubtitle")}
                   </p>
                   <Link to="/contact">
                     <Button size="lg" variant="secondary" className="shadow-xl">
-                      Get Started Today
+                      {t("home.ctaGetStarted")}
                       <ArrowRight className="ml-2" size={20} />
                     </Button>
                   </Link>

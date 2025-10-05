@@ -7,6 +7,8 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Mail, Phone, MapPin } from "lucide-react";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
+import { useTranslation } from "react-i18next";
+import i18n from "@/i18n";
 
 const Contact = () => {
   const { toast } = useToast();
@@ -32,8 +34,9 @@ const Contact = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  const { t } = useTranslation("common");
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col" data-lang={i18n.resolvedLanguage}>
       <Navigation />
       
       <main className="flex-1">
@@ -41,10 +44,10 @@ const Contact = () => {
         <section className="py-20 bg-secondary/20">
           <div className="container mx-auto px-4">
             <h1 className="text-5xl md:text-6xl font-bold mb-6 animate-fade-up">
-              Get in Touch
+              {t("contact.headerTitle")}
             </h1>
             <p className="text-xl text-muted-foreground max-w-2xl animate-fade-up">
-              Have a project in mind? Let's discuss how we can help bring your vision to life.
+              {t("contact.headerSubtitle")}
             </p>
           </div>
         </section>
@@ -56,24 +59,24 @@ const Contact = () => {
               <div className="animate-fade-in">
                 <Card>
                   <CardContent className="p-8">
-                    <h2 className="text-3xl font-bold mb-6">Send us a message</h2>
+                    <h2 className="text-3xl font-bold mb-6">{t("contact.form.title")}</h2>
                     <form onSubmit={handleSubmit} className="space-y-6">
                       <div>
                         <label htmlFor="name" className="block text-sm font-medium mb-2">
-                          Your Name
+                          {t("contact.form.name")}
                         </label>
                         <Input
                           id="name"
                           name="name"
                           value={formData.name}
                           onChange={handleChange}
-                          placeholder="John Doe"
+                          placeholder={t("contact.form.namePlaceholder")}
                           required
                         />
                       </div>
                       <div>
                         <label htmlFor="email" className="block text-sm font-medium mb-2">
-                          Email Address
+                          {t("contact.form.email")}
                         </label>
                         <Input
                           id="email"
@@ -81,26 +84,26 @@ const Contact = () => {
                           type="email"
                           value={formData.email}
                           onChange={handleChange}
-                          placeholder="john@example.com"
+                          placeholder={t("contact.form.emailPlaceholder")}
                           required
                         />
                       </div>
                       <div>
                         <label htmlFor="message" className="block text-sm font-medium mb-2">
-                          Message
+                          {t("contact.form.message")}
                         </label>
                         <Textarea
                           id="message"
                           name="message"
                           value={formData.message}
                           onChange={handleChange}
-                          placeholder="Tell us about your project..."
+                          placeholder={t("contact.form.messagePlaceholder")}
                           rows={6}
                           required
                         />
                       </div>
                       <Button type="submit" size="lg" className="w-full">
-                        Send Message
+                        {t("contact.form.submit")}
                       </Button>
                     </form>
                   </CardContent>
@@ -110,9 +113,9 @@ const Contact = () => {
               {/* Contact Info */}
               <div className="space-y-8 animate-fade-in" style={{ animationDelay: "0.1s" }}>
                 <div>
-                  <h2 className="text-3xl font-bold mb-6">Contact Information</h2>
+                  <h2 className="text-3xl font-bold mb-6">{t("contact.info.title")}</h2>
                   <p className="text-muted-foreground mb-8">
-                    Feel free to reach out through any of these channels. We're here to help!
+                    {t("contact.info.subtitle")}
                   </p>
                 </div>
 
@@ -123,7 +126,7 @@ const Contact = () => {
                         <Mail className="text-primary" size={24} />
                       </div>
                       <div>
-                        <h3 className="font-semibold mb-1">Email</h3>
+                        <h3 className="font-semibold mb-1">{t("contact.info.email")}</h3>
                         <p className="text-muted-foreground">hello@creativeyard.com</p>
                       </div>
                     </CardContent>
@@ -135,7 +138,7 @@ const Contact = () => {
                         <Phone className="text-primary" size={24} />
                       </div>
                       <div>
-                        <h3 className="font-semibold mb-1">Phone</h3>
+                        <h3 className="font-semibold mb-1">{t("contact.info.phone")}</h3>
                         <p className="text-muted-foreground">+1 (555) 123-4567</p>
                       </div>
                     </CardContent>
@@ -147,7 +150,7 @@ const Contact = () => {
                         <MapPin className="text-primary" size={24} />
                       </div>
                       <div>
-                        <h3 className="font-semibold mb-1">Location</h3>
+                        <h3 className="font-semibold mb-1">{t("contact.info.location")}</h3>
                         <p className="text-muted-foreground">123 Creative Street<br />Design City, DC 12345</p>
                       </div>
                     </CardContent>

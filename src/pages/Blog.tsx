@@ -3,6 +3,8 @@ import Footer from "@/components/Footer";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Calendar, Clock } from "lucide-react";
+import { useTranslation } from "react-i18next";
+import i18n from "@/i18n";
 
 const Blog = () => {
   const posts = [
@@ -44,8 +46,9 @@ const Blog = () => {
     },
   ];
 
+  const { t } = useTranslation("common");
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col" data-lang={i18n.resolvedLanguage}>
       <Navigation />
       
       <main className="flex-1">
@@ -53,10 +56,10 @@ const Blog = () => {
         <section className="py-20 bg-secondary/20">
           <div className="container mx-auto px-4">
             <h1 className="text-5xl md:text-6xl font-bold mb-6 animate-fade-up">
-              Blog
+              {t("blog.headerTitle")}
             </h1>
             <p className="text-xl text-muted-foreground max-w-2xl animate-fade-up">
-              Insights, tutorials, and thoughts on design, development, and creativity.
+              {t("blog.headerSubtitle")}
             </p>
           </div>
         </section>
