@@ -22,7 +22,8 @@
     "services": "Услуги",
     "about": "О нас",
     "contact": "Контакты",
-    "signIn": "Войти"
+    "signIn": "Войти",
+    "signOut": "Выйти"
   },
   "footer": {
     "brand": "Creative Yard",

@@ -22,7 +22,8 @@
     "services": "Services",
     "about": "About",
     "contact": "Contact",
-    "signIn": "Sign In"
+    "signIn": "Sign In",
+    "signOut": "Sign Out"
   },
   "footer": {
     "brand": "Creative Yard",

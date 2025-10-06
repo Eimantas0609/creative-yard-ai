@@ -1,11 +1,34 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import LanguageSwitcher from "./LanguageSwitcher";
 import i18n from "@/i18n";
 import { Button } from "@/components/ui/button";
+import { useAuth } from "@/contexts/AuthContext";
+import { supabase } from "@/integrations/supabase/client";
+import { useToast } from "@/hooks/use-toast";
 
 export default function Header() {
   const { t } = useTranslation("common");
+  const { user, loading } = useAuth();
+  const { toast } = useToast();
+  const navigate = useNavigate();
+
+  const handleSignOut = async () => {
+    const { error } = await supabase.auth.signOut();
+    if (error) {
+      toast({
+        title: "Error",
+        description: error.message,
+        variant: "destructive",
+      });
+      return;
+    }
+    toast({
+      title: "Signed out",
+      description: "You've been signed out successfully.",
+    });
+    navigate("/");
+  };
 
   return (
     <header className="sticky top-0 z-50 bg-background/80 backdrop-blur-md border-b border-border" data-lang={i18n.resolvedLanguage}>
@@ -37,9 +60,17 @@ export default function Header() {
           </nav>
           <div className="flex items-center gap-3">
             <LanguageSwitcher />
-            <Link to="/auth">
-              <Button size="sm">{t("header.signIn")}</Button>
-            </Link>
+            {!loading && (
+              user ? (
+                <Button size="sm" onClick={handleSignOut}>
+                  {t("header.signOut")}
+                </Button>
+              ) : (
+                <Link to="/auth">
+                  <Button size="sm">{t("header.signIn")}</Button>
+                </Link>
+              )
+            )}
           </div>
         </div>
       </div>

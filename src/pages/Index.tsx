@@ -1,4 +1,3 @@
-import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -6,47 +5,42 @@ import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import SeoLinks from "@/components/SeoLinks";
+import { useQuery } from "@tanstack/react-query";
+import { supabase } from "@/integrations/supabase/client";
+import { Skeleton } from "@/components/ui/skeleton";
 
 const Index = () => {
-  const featuredProjects = [
-    {
-      id: 1,
-      title: "E-Commerce Platform",
-      category: "Web Development",
-      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop",
-    },
-    {
-      id: 2,
-      title: "Brand Identity Design",
-      category: "Branding",
-      image: "https://images.unsplash.com/photo-1558655146-9f40138edfeb?w=800&h=600&fit=crop",
-    },
-    {
-      id: 3,
-      title: "Mobile Banking App",
-      category: "Mobile Design",
-      image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&h=600&fit=crop",
-    },
-  ];
-
-  const latestPosts = [
-    {
-      id: 1,
-      title: "The Future of Web Design in 2024",
-      excerpt: "Exploring emerging trends and technologies shaping the future of web design.",
-      category: "Design",
-      image: "https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=800&h=600&fit=crop",
-    },
-    {
-      id: 2,
-      title: "Building Scalable React Applications",
-      excerpt: "Best practices and patterns for building maintainable React applications at scale.",
-      category: "Development",
-      image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&h=600&fit=crop",
-    },
-  ];
-
   const { t } = useTranslation("common");
+
+  const { data: featuredProjects = [], isLoading: projectsLoading } = useQuery({
+    queryKey: ["featured-projects"],
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from("projects")
+        .select("id, title, category, thumb_url")
+        .eq("status", "published")
+        .order("created_at", { ascending: false })
+        .limit(3);
+      
+      if (error) throw error;
+      return data || [];
+    },
+  });
+
+  const { data: latestPosts = [], isLoading: postsLoading } = useQuery({
+    queryKey: ["latest-posts"],
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from("posts")
+        .select("id, title, excerpt, category, cover_url")
+        .eq("status", "published")
+        .order("published_at", { ascending: false })
+        .limit(2);
+      
+      if (error) throw error;
+      return data || [];
+    },
+  });
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -91,7 +85,17 @@ const Index = () => {
               </p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
-              {featuredProjects.map((project, index) => (
+              {projectsLoading ? (
+                Array(3).fill(0).map((_, i) => (
+                  <Card key={i} className="overflow-hidden">
+                    <Skeleton className="aspect-video w-full" />
+                    <CardContent className="p-6">
+                      <Skeleton className="h-6 w-24 mb-3" />
+                      <Skeleton className="h-6 w-full" />
+                    </CardContent>
+                  </Card>
+                ))
+              ) : featuredProjects.map((project, index) => (
                 <Card 
                   key={project.id} 
                   className="group overflow-hidden hover:shadow-warm transition-all duration-300 cursor-pointer animate-fade-in"
@@ -99,7 +103,7 @@ const Index = () => {
                 >
                   <div className="aspect-video overflow-hidden">
                     <img
-                      src={project.image}
+                      src={project.thumb_url || "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop"}
                       alt={project.title}
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                     />
@@ -134,7 +138,18 @@ const Index = () => {
               </p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8 max-w-5xl mx-auto">
-              {latestPosts.map((post, index) => (
+              {postsLoading ? (
+                Array(2).fill(0).map((_, i) => (
+                  <Card key={i} className="overflow-hidden">
+                    <Skeleton className="aspect-video w-full" />
+                    <CardContent className="p-6">
+                      <Skeleton className="h-6 w-24 mb-3" />
+                      <Skeleton className="h-6 w-full mb-2" />
+                      <Skeleton className="h-4 w-full" />
+                    </CardContent>
+                  </Card>
+                ))
+              ) : latestPosts.map((post, index) => (
                 <Card 
                   key={post.id} 
                   className="group overflow-hidden hover:shadow-warm transition-all duration-300 cursor-pointer animate-fade-in"
@@ -142,7 +157,7 @@ const Index = () => {
                 >
                   <div className="aspect-video overflow-hidden">
                     <img
-                      src={post.image}
+                      src={post.cover_url || "https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=800&h=600&fit=crop"}
                       alt={post.title}
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                     />
@@ -193,8 +208,6 @@ const Index = () => {
           </div>
         </section>
       </main>
-
-      <Footer />
     </div>
   );
 };

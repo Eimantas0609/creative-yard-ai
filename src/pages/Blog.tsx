@@ -1,51 +1,28 @@
-import Footer from "@/components/Footer";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Calendar, Clock } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import i18n from "@/i18n";
+import { useQuery } from "@tanstack/react-query";
+import { supabase } from "@/integrations/supabase/client";
+import { Skeleton } from "@/components/ui/skeleton";
 
 const Blog = () => {
-  const posts = [
-    {
-      id: 1,
-      title: "The Future of Web Design in 2024",
-      excerpt: "Exploring emerging trends and technologies shaping the future of web design.",
-      category: "Design",
-      date: "2024-01-15",
-      readTime: "5 min read",
-      image: "https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=800&h=600&fit=crop",
-    },
-    {
-      id: 2,
-      title: "Building Scalable React Applications",
-      excerpt: "Best practices and patterns for building maintainable React applications at scale.",
-      category: "Development",
-      date: "2024-01-10",
-      readTime: "8 min read",
-      image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&h=600&fit=crop",
-    },
-    {
-      id: 3,
-      title: "Color Psychology in Branding",
-      excerpt: "Understanding how colors influence emotions and drive brand perception.",
-      category: "Branding",
-      date: "2024-01-05",
-      readTime: "6 min read",
-      image: "https://images.unsplash.com/photo-1541701494587-cb58502866ab?w=800&h=600&fit=crop",
-    },
-    {
-      id: 4,
-      title: "Mastering CSS Grid Layout",
-      excerpt: "A comprehensive guide to creating complex layouts with CSS Grid.",
-      category: "Development",
-      date: "2023-12-28",
-      readTime: "7 min read",
-      image: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=800&h=600&fit=crop",
-    },
-  ];
-
   const { t } = useTranslation("common");
+
+  const { data: posts = [], isLoading } = useQuery({
+    queryKey: ["posts"],
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from("posts")
+        .select("*")
+        .eq("status", "published")
+        .order("published_at", { ascending: false });
+      
+      if (error) throw error;
+      return data || [];
+    },
+  });
   return (
     <div className="min-h-screen flex flex-col" data-lang={i18n.resolvedLanguage}>
       {/* Navigation removed in favor of global Header in App */}
@@ -67,7 +44,19 @@ const Blog = () => {
         <section className="py-16">
           <div className="container mx-auto px-4">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {posts.map((post, index) => (
+              {isLoading ? (
+                Array(4).fill(0).map((_, i) => (
+                  <Card key={i} className="overflow-hidden">
+                    <Skeleton className="aspect-video w-full" />
+                    <CardContent className="p-6">
+                      <Skeleton className="h-6 w-24 mb-3" />
+                      <Skeleton className="h-6 w-full mb-3" />
+                      <Skeleton className="h-4 w-full mb-4" />
+                      <Skeleton className="h-4 w-32" />
+                    </CardContent>
+                  </Card>
+                ))
+              ) : posts.map((post, index) => (
                 <Card 
                   key={post.id} 
                   className="group overflow-hidden hover:shadow-warm transition-all duration-300 cursor-pointer animate-fade-in"
@@ -75,7 +64,7 @@ const Blog = () => {
                 >
                   <div className="aspect-video overflow-hidden">
                     <img
-                      src={post.image}
+                      src={post.cover_url || "https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=800&h=600&fit=crop"}
                       alt={post.title}
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                     />
@@ -91,11 +80,11 @@ const Blog = () => {
                     <div className="flex items-center gap-4 text-sm text-muted-foreground">
                       <div className="flex items-center gap-1">
                         <Calendar size={16} />
-                        <span>{new Date(post.date).toLocaleDateString()}</span>
+                        <span>{post.published_at ? new Date(post.published_at).toLocaleDateString() : "N/A"}</span>
                       </div>
                       <div className="flex items-center gap-1">
                         <Clock size={16} />
-                        <span>{post.readTime}</span>
+                        <span>{post.read_time || "5 min read"}</span>
                       </div>
                     </div>
                   </CardContent>
@@ -105,8 +94,6 @@ const Blog = () => {
           </div>
         </section>
       </main>
-
-      <Footer />
     </div>
   );
 };

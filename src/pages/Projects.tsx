@@ -1,62 +1,27 @@
-import Footer from "@/components/Footer";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { useTranslation } from "react-i18next";
 import i18n from "@/i18n";
+import { useQuery } from "@tanstack/react-query";
+import { supabase } from "@/integrations/supabase/client";
+import { Skeleton } from "@/components/ui/skeleton";
 
 const Projects = () => {
-  const projects = [
-    {
-      id: 1,
-      title: "E-Commerce Platform",
-      category: "Web Development",
-      year: "2024",
-      description: "A modern e-commerce platform with seamless user experience and robust backend.",
-      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop",
-    },
-    {
-      id: 2,
-      title: "Brand Identity Design",
-      category: "Branding",
-      year: "2024",
-      description: "Complete brand identity for a sustainable fashion startup.",
-      image: "https://images.unsplash.com/photo-1558655146-9f40138edfeb?w=800&h=600&fit=crop",
-    },
-    {
-      id: 3,
-      title: "Mobile Banking App",
-      category: "Mobile Design",
-      year: "2023",
-      description: "Intuitive mobile banking application with focus on security and UX.",
-      image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&h=600&fit=crop",
-    },
-    {
-      id: 4,
-      title: "Restaurant Website",
-      category: "Web Development",
-      year: "2023",
-      description: "Beautiful website for a fine dining restaurant with online reservations.",
-      image: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&h=600&fit=crop",
-    },
-    {
-      id: 5,
-      title: "Fitness Tracker App",
-      category: "Product Design",
-      year: "2023",
-      description: "Comprehensive fitness tracking app with social features.",
-      image: "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=800&h=600&fit=crop",
-    },
-    {
-      id: 6,
-      title: "Portfolio Redesign",
-      category: "Web Design",
-      year: "2024",
-      description: "Modern portfolio redesign for a creative agency.",
-      image: "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=800&h=600&fit=crop",
-    },
-  ];
-
   const { t } = useTranslation("common");
+
+  const { data: projects = [], isLoading } = useQuery({
+    queryKey: ["projects"],
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from("projects")
+        .select("*")
+        .eq("status", "published")
+        .order("created_at", { ascending: false });
+      
+      if (error) throw error;
+      return data || [];
+    },
+  });
   return (
     <div className="min-h-screen flex flex-col" data-lang={i18n.resolvedLanguage}>
       {/* Navigation removed in favor of global Header in App */}
@@ -78,7 +43,18 @@ const Projects = () => {
         <section className="py-16">
           <div className="container mx-auto px-4">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {projects.map((project, index) => (
+              {isLoading ? (
+                Array(6).fill(0).map((_, i) => (
+                  <Card key={i} className="overflow-hidden">
+                    <Skeleton className="aspect-video w-full" />
+                    <CardContent className="p-6">
+                      <Skeleton className="h-6 w-24 mb-3" />
+                      <Skeleton className="h-6 w-full mb-2" />
+                      <Skeleton className="h-4 w-full" />
+                    </CardContent>
+                  </Card>
+                ))
+              ) : projects.map((project, index) => (
                 <Card 
                   key={project.id} 
                   className="group overflow-hidden hover:shadow-warm transition-all duration-300 cursor-pointer animate-fade-in"
@@ -86,7 +62,7 @@ const Projects = () => {
                 >
                   <div className="aspect-video overflow-hidden">
                     <img
-                      src={project.image}
+                      src={project.thumb_url || "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop"}
                       alt={project.title}
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                     />
@@ -109,8 +85,6 @@ const Projects = () => {
           </div>
         </section>
       </main>
-
-      <Footer />
     </div>
   );
 };

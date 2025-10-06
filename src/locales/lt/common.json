@@ -22,7 +22,8 @@
     "services": "Paslaugos",
     "about": "Apie mus",
     "contact": "Kontaktai",
-    "signIn": "Prisijungti"
+    "signIn": "Prisijungti",
+    "signOut": "Atsijungti"
   },
   "footer": {
     "brand": "Creative Yard",

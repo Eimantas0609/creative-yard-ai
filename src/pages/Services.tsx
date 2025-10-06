@@ -1,14 +1,40 @@
-import Footer from "@/components/Footer";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Palette, Code, Smartphone, Globe, Sparkles, Users } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import i18n from "@/i18n";
+import { useQuery } from "@tanstack/react-query";
+import { supabase } from "@/integrations/supabase/client";
+import { Skeleton } from "@/components/ui/skeleton";
 
 const Services = () => {
   const { t } = useTranslation("common");
-  const services = [
+  
+  const iconMap: Record<string, any> = {
+    palette: Palette,
+    globe: Globe,
+    smartphone: Smartphone,
+    code: Code,
+    sparkles: Sparkles,
+    users: Users,
+  };
+
+  const { data: servicesData = [], isLoading } = useQuery({
+    queryKey: ["services"],
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from("services")
+        .select("*")
+        .order("order_index", { ascending: true });
+      
+      if (error) throw error;
+      return data || [];
+    },
+  });
+
+  // Fallback hardcoded services for i18n demonstration
+  const hardcodedServices = [
     {
       icon: Palette,
       title: t("services.items.brandIdentity.title"),
@@ -83,6 +109,17 @@ const Services = () => {
     },
   ];
 
+  // Use database services if available, otherwise fallback to hardcoded
+  const services = servicesData.length > 0 
+    ? servicesData.map(s => ({
+        icon: iconMap[s.icon || "code"] || Code,
+        title: s.title,
+        description: s.description,
+        features: Array.isArray(s.features) ? (s.features as string[]) : [],
+        priceRange: s.price_range || "Contact us",
+      }))
+    : hardcodedServices;
+
   return (
     <div className="min-h-screen flex flex-col" data-lang={i18n.resolvedLanguage}>
       {/* Navigation removed in favor of global Header in App */}
@@ -104,7 +141,21 @@ const Services = () => {
         <section className="py-16">
           <div className="container mx-auto px-4">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {services.map((service, index) => (
+              {isLoading ? (
+                Array(6).fill(0).map((_, i) => (
+                  <Card key={i}>
+                    <CardHeader>
+                      <Skeleton className="w-12 h-12 rounded-full mb-4" />
+                      <Skeleton className="h-6 w-full" />
+                    </CardHeader>
+                    <CardContent className="space-y-4">
+                      <Skeleton className="h-4 w-full" />
+                      <Skeleton className="h-4 w-full" />
+                      <Skeleton className="h-4 w-3/4" />
+                    </CardContent>
+                  </Card>
+                ))
+              ) : services.map((service, index) => (
                 <Card 
                   key={service.title} 
                   className="hover:shadow-warm transition-all duration-300 animate-fade-in"
@@ -121,10 +172,10 @@ const Services = () => {
                       {service.description}
                     </p>
                     <ul className="space-y-2">
-                      {service.features.map((feature) => (
-                        <li key={feature} className="text-sm flex items-center gap-2">
+                      {service.features.map((feature, idx) => (
+                        <li key={`${service.title}-feature-${idx}`} className="text-sm flex items-center gap-2">
                           <span className="w-1.5 h-1.5 rounded-full bg-primary"></span>
-                          {feature}
+                          {String(feature)}
                         </li>
                       ))}
                     </ul>
@@ -158,8 +209,6 @@ const Services = () => {
           </div>
         </section>
       </main>
-
-      <Footer />
     </div>
   );
 };
