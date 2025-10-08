@@ -138,6 +138,17 @@
       "phone": "Telefonas",
       "location": "Vieta"
     }
+  },
+  "notFound": {
+    "title": "404",
+    "message": "Atsiprašome! Puslapis nerastas",
+    "returnHome": "Grįžti į pagrindinį"
+  },
+  "chat": {
+    "title": "Klauskite bet ko",
+    "placeholder": "Rašykite žinutę...",
+    "send": "Siųsti",
+    "error": "Atsiprašome, nepavyko apdoroti."
   }
 }
 

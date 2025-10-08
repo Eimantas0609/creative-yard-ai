@@ -14,6 +14,7 @@ import Contact from "./pages/Contact";
 import Auth from "./pages/Auth";
 import NotFound from "./pages/NotFound";
 import Footer from "@/components/Footer";
+import ChatWidget from "@/components/ChatWidget";
 
 const queryClient = new QueryClient();
 
@@ -37,6 +38,7 @@ const App = () => (
           <Route path="*" element={<NotFound />} />
           </Routes>
           <Footer />
+          <ChatWidget />
         </BrowserRouter>
       </TooltipProvider>
     </AuthProvider>

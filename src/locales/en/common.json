@@ -138,6 +138,17 @@
       "phone": "Phone",
       "location": "Location"
     }
+  },
+  "notFound": {
+    "title": "404",
+    "message": "Oops! Page not found",
+    "returnHome": "Return to Home"
+  },
+  "chat": {
+    "title": "Ask me anything",
+    "placeholder": "Type your message...",
+    "send": "Send",
+    "error": "Sorry, I couldn't process that."
   }
 }
 
